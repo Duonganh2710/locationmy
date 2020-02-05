@@ -10,10 +10,14 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
@@ -23,24 +27,32 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private static final int REQUEST_PERMISSION = 5000;
     private LocationManager myLocationManager;
     private boolean openGPS;
-    public Location myCurrentLocation;
+    private Location myCurrentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         Init();
         butGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myCurrentLocation = GetCurrentLocation();
-                textViewLocation.setText(myCurrentLocation.getLatitude() + "  " + myCurrentLocation.getLongitude());
+                if(myCurrentLocation != null){
+                textViewLocation.setText(myCurrentLocation.getLatitude() + " " +myCurrentLocation.getLongitude());
+                }
             }
         });
         butOpenGoogleMaps.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  Intent intentt = new Intent(MainActivity.this ,MyGoogleMaps.class);
+                 if(myCurrentLocation == null)
+                     Toast.makeText(MainActivity.this ,"dkfs" ,Toast.LENGTH_LONG).show();
+                 intentt.putExtra("Latitude",myCurrentLocation.getLatitude());
+                 intentt.putExtra("Longitude",myCurrentLocation.getLongitude());
                  startActivity(intentt);
              }
          });

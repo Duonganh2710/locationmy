@@ -1,11 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyGoogleMaps">
+
     <fragment
         android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp" />
+
+    <SearchView
+        android:id="@+id/SearchViewLocation"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_search_view"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/custom_search_view"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ButRoad"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_road" />
+
+        <ImageButton
+            android:id="@+id/ButSatellite"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_satellite" />
+
+        <ImageButton
+            android:id="@+id/ButTerrain"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_terrain" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ButOpenStreetView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="470dp"
+        android:background="@drawable/ic_gps"
+        android:scaleType="fitXY" />
+    <ImageButton
+        android:id="@+id/ButCurrentLocation"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_pin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="400dp"/>
 
 </RelativeLayout>
